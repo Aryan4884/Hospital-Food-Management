@@ -1,0 +1,16 @@
+{
+  "files.associations": {
+    "*.ejs": "html",
+    "*.tcc": "cpp",
+    "vector": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "initializer_list": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "valarray": "cpp"
+  }
+}
