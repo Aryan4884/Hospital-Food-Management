@@ -13,8 +13,12 @@ const MealPreparation = () => {
     const fetchMealsAndPatients = async () => {
       try {
         const [mealsResponse, patientsResponse] = await Promise.all([
-          fetch("http://localhost:5000/meals"),
-          fetch("http://localhost:5000/patients"),
+          fetch(
+            "https://hospital-food-management-backend-my25.onrender.com/meals"
+          ),
+          fetch(
+            "https://hospital-food-management-backend-my25.onrender.com/patients"
+          ),
         ]);
 
         if (!mealsResponse.ok || !patientsResponse.ok) {
@@ -46,11 +50,14 @@ const MealPreparation = () => {
     setError(""); // Reset error before trying to update
 
     try {
-      const response = await fetch(`http://localhost:5000/meals/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status }),
-      });
+      const response = await fetch(
+        `https://hospital-food-management-backend-my25.onrender.com/meals/${id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -71,14 +78,17 @@ const MealPreparation = () => {
         (patient) => patient._id === updatedMeal.patientId
       );
       if (correspondingPatient) {
-        await fetch("http://localhost:5000/deliveries", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            mealId: id,
-            patientDetails: correspondingPatient,
-          }),
-        });
+        await fetch(
+          "https://hospital-food-management-backend-my25.onrender.com/deliveries",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              mealId: id,
+              patientDetails: correspondingPatient,
+            }),
+          }
+        );
         console.log(
           "Patient details passed to deliveries:",
           correspondingPatient

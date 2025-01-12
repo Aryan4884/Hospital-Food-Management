@@ -17,7 +17,9 @@ const DeliveryManagement = () => {
   useEffect(() => {
     const fetchDeliveryPersonnel = async () => {
       try {
-        const response = await fetch("http://localhost:5000/deliveryPersonnel");
+        const response = await fetch(
+          "https://hospital-food-management-backend-my25.onrender.com/deliveryPersonnel"
+        );
         if (response.ok) {
           const data = await response.json();
           setDeliveryPersonnelList(data);
@@ -36,7 +38,9 @@ const DeliveryManagement = () => {
   useEffect(() => {
     const fetchPreparedOrders = async () => {
       try {
-        const response = await fetch("http://localhost:5000/meals");
+        const response = await fetch(
+          "https://hospital-food-management-backend-my25.onrender.com/meals"
+        );
         if (response.ok) {
           const data = await response.json();
           const preparedOrders = data.filter(
@@ -101,13 +105,16 @@ const DeliveryManagement = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/deliveries", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(deliveryData),
-      });
+      const response = await fetch(
+        "https://hospital-food-management-backend-my25.onrender.com/deliveries",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(deliveryData),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

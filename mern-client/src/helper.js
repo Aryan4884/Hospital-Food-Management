@@ -1,1 +1,2 @@
-export const BASE_URL = "https://book-store-backend-8lxg.onrender.com";
+export const BASE_URL =
+  "https://hospital-food-management-backend-my25.onrender.com";

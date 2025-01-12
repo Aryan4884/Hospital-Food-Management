@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const BASE_URL = "http://localhost:5000"; // Directly set the base URL here
+const BASE_URL = "https://hospital-food-management-backend-my25.onrender.com"; // Directly set the base URL here
 
 const PatientDetails = () => {
   const [patients, setPatients] = useState([]); // State to store all patients

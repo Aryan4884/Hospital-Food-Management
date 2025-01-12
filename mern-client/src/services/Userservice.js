@@ -2,7 +2,7 @@
 export const fetchUserRole = async (userId) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/users/${userId}/role`
+      `https://hospital-food-management-backend-my25.onrender.com/api/users/${userId}/role`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch user role");

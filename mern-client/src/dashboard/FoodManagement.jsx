@@ -6,7 +6,9 @@ const FoodManagement = () => {
   // Fetch meals data
   const fetchMeals = async () => {
     try {
-      const response = await fetch("http://localhost:5000/meals");
+      const response = await fetch(
+        "https://hospital-food-management-backend-my25.onrender.com/meals"
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch meals");
       }

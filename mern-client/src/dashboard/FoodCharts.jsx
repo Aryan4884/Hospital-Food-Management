@@ -13,7 +13,9 @@ const FoodCharts = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch("http://localhost:5000/patients"); // Replace with your API endpoint
+        const response = await fetch(
+          "https://hospital-food-management-backend-my25.onrender.com/patients"
+        ); // Replace with your API endpoint
         const data = await response.json();
         setPatients(data);
       } catch (error) {
@@ -50,11 +52,14 @@ const FoodCharts = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/dietCharts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://hospital-food-management-backend-my25.onrender.com/dietCharts",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (response.ok) {
         alert("Meal plan saved successfully!");

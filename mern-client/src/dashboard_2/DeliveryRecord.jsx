@@ -9,7 +9,9 @@ const DeliveryRecord = () => {
   useEffect(() => {
     const fetchDeliveries = async () => {
       try {
-        const response = await fetch("http://localhost:5000/deliveries");
+        const response = await fetch(
+          "https://hospital-food-management-backend-my25.onrender.com/deliveries"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch deliveries");
         }
@@ -28,7 +30,7 @@ const DeliveryRecord = () => {
   const updateDeliveryStatus = async (id, newStatus) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/deliveries/${id}/status`,
+        `https://hospital-food-management-backend-my25.onrender.com/deliveries/${id}/status`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
