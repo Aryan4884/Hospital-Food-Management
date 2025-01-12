@@ -2,15 +2,12 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contacts/AuthProvider";
 import googleLogo from "../assets/google-logo.svg";
-import { fetchUserRole } from "../services/Userservice";
 
 const InnerPantryLogin = () => {
   const { login, loginwithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState({ login: false, google: false });
-  const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -24,16 +21,13 @@ const InnerPantryLogin = () => {
 
       const userCredential = await login(email, password);
       console.log("User Credential:", userCredential);
-      const user = userCredential?.user;
 
-      if (!user) {
+      if (userCredential?.user) {
+        alert("Login successful!");
+        navigate("/inner-pantry/dashboard", { replace: true });
+      } else {
         throw new Error("Failed to retrieve user data. Please try again.");
       }
-
-      const userRole = await fetchUserRole(user.uid);
-      if (userRole === "inner-pantry") alert("Sign up successful!");
-      else alert("Go to Food Manager login");
-      navigateBasedOnRole(userRole);
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");
     } finally {
@@ -49,28 +43,16 @@ const InnerPantryLogin = () => {
       const result = await loginwithGoogle();
       const user = result?.user;
 
-      if (!user) {
+      if (user) {
+        alert("Login successful!");
+        navigate("/inner-pantry/dashboard", { replace: true });
+      } else {
         throw new Error("Failed to retrieve user data. Please try again.");
       }
-
-      const userRole = await fetchUserRole(user.uid);
-      if (userRole === "inner-pantry") alert("Sign up successful!");
-      else alert("Go to Food Manager login");
-      navigateBasedOnRole(userRole);
     } catch (err) {
       setError(err.message || "Google login failed. Please try again.");
     } finally {
       setLoading((prev) => ({ ...prev, google: false }));
-    }
-  };
-
-  const navigateBasedOnRole = (role) => {
-    if (role === "food-manager") {
-      navigate("/login/food-manager", { replace: true });
-    } else if (role === "inner-pantry") {
-      navigate("/inner-pantry/dashboard", { replace: true });
-    } else {
-      alert("Role not recognized!");
     }
   };
 
