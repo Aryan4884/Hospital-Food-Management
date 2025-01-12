@@ -1,54 +1,103 @@
-import React from 'react'
 import { Sidebar } from "flowbite-react";
+import { Link } from "react-router-dom";
 import { BiBuoy } from "react-icons/bi";
-import { HiArrowSmRight, HiChartPie, HiInbox, HiOutlineCloudUpload, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import {
+  HiArrowSmRight,
+  HiChartPie,
+  HiInbox,
+  HiOutlineCloudUpload,
+  HiShoppingBag,
+  HiTable,
+  HiUser,
+  HiViewBoards,
+} from "react-icons/hi";
 
-import userImg from "../assets/profile.jpg"
-export const SideBar = () => {
+import userImg from "../assets/profile.jpg";
+
+const SideBar = () => {
   return (
-    <Sidebar aria-label="Sidebar with content separator example">
-      <Sidebar.Logo href="#" img={userImg} imgAlt="Flowbite logo">
-        <p>
-        Flowbite
-        </p> 
+    <Sidebar aria-label="Hospital Food Management Admin Sidebar">
+      {/* Logo Section */}
+      <Sidebar.Logo href="#" img={userImg} imgAlt="Admin Logo">
+        <p>Food Manager</p>
       </Sidebar.Logo>
+
+      {/* Sidebar Items */}
       <Sidebar.Items>
+        {/* Main Navigation */}
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard"
+            icon={HiChartPie}
+          >
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
-            Upload Book
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard/add-patients"
+            icon={HiUser} // Using a user icon for "Add Patient"
+          >
+            Add Patient
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
-            Manage Books
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard/food-charts"
+            icon={HiOutlineCloudUpload}
+          >
+            Food Charts
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard/pantry-management"
+            icon={HiShoppingBag}
+          >
+            Pantry Management
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard/food-management"
+            icon={HiShoppingBag}
+          >
+            Food Management
           </Sidebar.Item>
-          <Sidebar.Item href="/login" icon={HiArrowSmRight}>
+          <Sidebar.Item
+            as={Link}
+            to="/food-manager/dashboard/meal-tracking"
+            icon={HiTable}
+          >
+            Meal Tracking
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} to="#" icon={HiUser}>
+            Admin Settings
+          </Sidebar.Item>
+          <Sidebar.Item
+            as={Link}
+            to="/login/food-manager"
+            icon={HiArrowSmRight}
+          >
             Sign In
           </Sidebar.Item>
-          <Sidebar.Item href="/logout" icon={HiTable}>
+          <Sidebar.Item as={Link} to="/logout" icon={HiTable}>
             Log Out
           </Sidebar.Item>
         </Sidebar.ItemGroup>
+
+        {/* Secondary Options */}
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+          <Sidebar.Item as={Link} to="#" icon={HiChartPie}>
             Upgrade to Pro
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          <Sidebar.Item as={Link} to="#" icon={HiViewBoards}>
             Documentation
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiBuoy}>
+          <Sidebar.Item as={Link} to="#" icon={BiBuoy}>
             Help
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
-  )
-}
+  );
+};
 
+export default SideBar;

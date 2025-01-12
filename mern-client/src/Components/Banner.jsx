@@ -1,25 +1,36 @@
-import React from 'react'
-import BannerCard from '../home/BannerCard'
+import React from "react";
+import HospitalBanner2 from "../assets/HospitalBanner2.jpg"; // Adjust the path as per your folder structure
 
 const Banner = () => {
   return (
-    <div className='px-4 lg:px-24 bg-teal-100 flex items-center'>
-        <div className='flex w-full flex-col md:flex-row justify-between items-center gap-12 py-40'>
-            <div className='md:w-1/2 space-y-7 h-full'>
-                <h2 className='text-5xl font-bold leding-snug text-black'> Buy and Sell Your Books <span className='text-blue-700'>
-                     for the Best Prices</span></h2>
-                <p className='md:w-4/5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto iusto consequatur dicta ducimus velit magni beatae cumque, quod nemo. Debitis eveniet qui facilis autem commodi quibusdam eius laborum omnis?
-                </p>
-                <div>
-                    <input type="search" id="seacrh" placeholder='Search a book' className='py-2 px-2 rounded-s-sm outline-none'/>
-                    <button className='bg-blue-700 px-6 py-2 text-white font-medium hover:bg-black>Search'>Search</button>
-                </div>
-            </div>
-            <div><BannerCard></BannerCard></div>
+    <div className="px-6 lg:px-32 bg-teal-100 flex items-center mt-20">
+      <div className="flex w-full flex-col md:flex-row justify-between items-center gap-12 py-20">
+        {/* Text Section */}
+        <div className="md:w-1/2 space-y-6">
+          <h2 className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-800 font-serif">
+            Welcome to one stop platform{" "}
+            <span className="text-blue-700">for Hospital Food Management</span>
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-700 md:w-4/5 font-light leading-relaxed tracking-wide font-sans">
+            Track and manage food delivery and patient diets efficiently. Our
+            platform ensures timely meal preparation, delivery, and nutritional
+            tracking for patients. From planning meals to monitoring dietary
+            restrictions, we make hospital food management seamless and
+            stress-free.
+          </p>
         </div>
-    </div>
-  )
-}
 
-export default Banner
+        {/* Image Section */}
+        <div className="md:w-1/2 flex justify-center">
+          <img
+            src={HospitalBanner2}
+            alt="Hospital Food Management"
+            className="w-full max-w-md lg:max-w-lg rounded-lg shadow-lg border-4 border-blue-700"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Banner;

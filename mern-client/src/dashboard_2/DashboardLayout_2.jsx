@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./SideBar";
 
-const DashboardLayout = () => {
+const DashboardLayout_2 = () => {
   return (
     <div className="flex">
       <Sidebar />
@@ -12,4 +12,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default DashboardLayout_2;
